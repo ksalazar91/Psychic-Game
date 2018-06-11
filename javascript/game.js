@@ -42,7 +42,42 @@ function restarGame(){
     
 }
 
-console.log(randomLetter);
+function win(){
+    wins++;
+    restarGame();
+    randomLetter = letter[getRandomInt()]; 
+}
+
+function lost(input){
+    guesses--;//decresse the guesse left
+    letterType.push(input);//shows the letters that the array has
+    if(guesses === 0){
+        losses++;
+        restarGame();
+        randomLetter = letter[getRandomInt()];
+    }            
+    else{
+        updateScreen();
+    }
+}
+
+function searchArry(input){
+    var k;
+    var j= 0;
+
+    for(var i=0; i<letter.length; i++){
+        k = letterType[i];
+        if(input === k){
+            j = 1;
+        }
+    }
+    return j;
+}
+
+console.log(randomLetter)
+
+
+
 
 
 //get the user guesses from the keyboard
@@ -52,22 +87,23 @@ document.onkeypress = function(event){
     var y = String.fromCharCode(x);
    
     if(randomLetter === y.toLowerCase()){
-        wins++;
+       /* wins++;
         restarGame();
-        randomLetter = letter[getRandomInt()];    
+        randomLetter = letter[getRandomInt()];  */ 
+        win();
     }
     
     else{
-        guesses--;
-        letterType.push(y);
-        if(guesses === 0){
-            losses++;
-            restarGame();
-            randomLetter = letter[getRandomInt()];
-        }            
+        var a = searchArry(y);
+        if(a === 0){
+            lost(y);
+        }
         else{
-            updateScreen();
+            alert("Try diffrent letter");
         }
     }
     
 }
+
+
+//https://ksalazar91.github.io/Responsive-Portfolio/portfolio.html link to porfolio 
