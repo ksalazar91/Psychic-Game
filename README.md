@@ -1,6 +1,8 @@
 # Psychic-Game
 JavaScript Homework
 
+ https://ksalazar91.github.io/Psychic-Game/
+
 The game randomly picks a letter and ask the user to
 guess which letter the game chose.
 
